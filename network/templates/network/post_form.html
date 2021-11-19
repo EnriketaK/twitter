@@ -1,0 +1,17 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+
+<div id="new-post">
+    <form method="POST" action="" enctype="multipart/form-data">
+        <fieldset>
+            <legend>New post:</legend>
+            {% csrf_token %}
+            <label class="label">{{ form.content.label }}</label>
+            <div class="input">{{ form.content }}</div>
+        </fieldset>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+{% endblock %}

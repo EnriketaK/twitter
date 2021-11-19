@@ -1,0 +1,37 @@
+{% extends "network/layout.html" %}
+{% load static %}
+{% block body %}
+
+<div class="big-container">
+    
+<div id="new-post-view" style="border: groove; margin: 10px; padding:10px">
+    <form method="POST" action="{% url 'index' %}" enctype="multipart/form-data"> 
+        <fieldset>
+            {% csrf_token %}
+            <h5>New post</h5>
+            <div class="form-group" id="username" value={{ user.get_username }}>
+                <textarea id="text-post" name="content" rows="3" cols="50" placeholder="Write something..."></textarea>
+            </div>
+        </fieldset>
+        {% if user.is_authenticated %}
+        <input id="submit-btn" type="submit">
+        {% else %}
+        <input id="submit-btn" type="submit" disabled class="addMore" title="Login to submit.">
+        {% endif %}
+    </form>
+</div>
+
+<div id="posts-view">
+
+</div>
+
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script> 
+    <script src="{% static 'network/net.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "network/layout.html" %}
+{% load static %}
+{% block body %}
+
+
+<div class="big-container">
+    <div id="user-profile" style="border: groove; margin: 10px; padding:10px">
+        <h3 id="current-user" value="{{ current_user }}">User: {{ profile_user.username }}</h3>
+        {% if current_user.is_authenticated %}
+        {% if diff_users %}
+        <button id="follow-btn" value=""  type="button" class="btn btn-primary">
+        </button>
+        {% endif %}
+        {% endif %}
+        <p>Followers: {{ followers }}</p>
+        <p>Following: {{ following }}</p>
+        
+    </div>
+    
+    <div id="posts-view">
+    
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script> 
+    <script src="{% static 'network/net.js' %}"></script>
+{% endblock %}
+
